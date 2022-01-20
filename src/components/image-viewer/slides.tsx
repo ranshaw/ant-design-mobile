@@ -1,19 +1,25 @@
-import React, { FC, useRef } from 'react'
+import React, {
+  forwardRef,
+  useImperativeHandle,
+  useRef,
+  useEffect,
+} from 'react'
 import { useDrag } from '@use-gesture/react'
 import { useSpring, animated } from '@react-spring/web'
 import { Slide } from './slide'
 import { convertPx } from '../../utils/convert-px'
 import { bound } from '../../utils/bound'
+import { MultiImageViewRef } from './image-viewer'
 
 const classPrefix = `adm-image-viewer`
-
-export const Slides: FC<{
+interface Props {
   images: string[]
   onTap: () => void
   maxZoom: number
   defaultIndex: number
   onIndexChange?: (index: number) => void
-}> = props => {
+}
+export const Slides = forwardRef<MultiImageViewRef, Props>((props, ref) => {
   const slideWidth = window.innerWidth + convertPx(16)
 
   const [{ x }, api] = useSpring(() => ({
@@ -22,7 +28,19 @@ export const Slides: FC<{
   }))
 
   const count = props.images.length
-
+  useImperativeHandle(
+    ref,
+    () => {
+      return {
+        swipeTo: index => {
+          api.start({
+            x: index * slideWidth,
+          })
+        },
+      }
+    },
+    []
+  )
   const dragLockRef = useRef(false)
   const bind = useDrag(
     state => {
@@ -100,4 +118,4 @@ export const Slides: FC<{
       </animated.div>
     </div>
   )
-}
+})

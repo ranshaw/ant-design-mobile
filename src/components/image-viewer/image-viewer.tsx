@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, forwardRef, useEffect } from 'react'
 
 import { mergeProps } from '../../utils/with-default-props'
 import {
@@ -18,6 +18,10 @@ export type ImageViewerProps = {
   visible?: boolean
   onClose?: () => void
   afterClose?: () => void
+}
+
+export type MultiImageViewRef = {
+  swipeTo: (index: number) => void
 }
 
 const defaultProps = {
@@ -63,7 +67,10 @@ const multiDefaultProps = {
   defaultIndex: 0,
 }
 
-export const MultiImageViewer: FC<MultiImageViewerProps> = p => {
+export const MultiImageViewer = forwardRef<
+  MultiImageViewRef,
+  MultiImageViewerProps
+>((p, ref) => {
   const props = mergeProps(multiDefaultProps, p)
 
   const node = (
@@ -79,6 +86,7 @@ export const MultiImageViewer: FC<MultiImageViewerProps> = p => {
             defaultIndex={props.defaultIndex}
             onIndexChange={props.onIndexChange}
             images={props.images}
+            ref={ref}
             onTap={() => {
               props.onClose?.()
             }}
@@ -89,4 +97,4 @@ export const MultiImageViewer: FC<MultiImageViewerProps> = p => {
     </Mask>
   )
   return renderToContainer(props.getContainer, node)
-}
+})

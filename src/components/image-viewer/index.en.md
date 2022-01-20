@@ -27,6 +27,12 @@ On the basis of `ImageViewer`, the following props have been added:
 
 At the same time, the `image` prop is removed.
 
+### Ref
+
+| Name    | Description                          | Type                      |
+| ------- | ------------------------------------ | ------------------------- |
+| swipeTo | translate to indexof the ImageViewer | `(index: number) => void` |
+
 ### Imperative
 
 Compared with the component-based usage above, the command-style is more convenient and more commonly used. In most cases, this method is recommended:

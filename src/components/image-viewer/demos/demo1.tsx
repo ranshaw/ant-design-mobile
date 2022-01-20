@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
-import { ImageViewer, Button } from 'antd-mobile'
+import React, { useState, useRef } from 'react'
+import { ImageViewer, Button, Image, Space } from 'antd-mobile'
 import { DemoBlock } from 'demos'
+import { MultiImageViewRef } from '../image-viewer'
 
 const demoImages = [
   'https://images.unsplash.com/photo-1620476214170-1d8080f65cdb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=3150&q=80',
@@ -56,6 +57,41 @@ const Multi = () => {
   )
 }
 
+const RefControl = () => {
+  const ref = useRef<MultiImageViewRef>(null)
+  const [visible, setVisible] = useState(false)
+  return (
+    <>
+      <ImageViewer.Multi
+        ref={ref}
+        images={demoImages}
+        visible={visible}
+        defaultIndex={0}
+        onClose={() => {
+          setVisible(false)
+        }}
+      />
+      <Space>
+        {demoImages.map((img, index) => {
+          return (
+            <Image
+              src={img}
+              key={index}
+              width={60}
+              height={60}
+              onClick={() => {
+                setVisible(true)
+                console.log('ref', ref.current)
+                ref.current?.swipeTo(index)
+              }}
+            />
+          )
+        })}
+      </Space>
+    </>
+  )
+}
+
 export default () => {
   return (
     <>
@@ -90,6 +126,9 @@ export default () => {
         >
           显示图片并在3秒后关闭
         </Button>
+      </DemoBlock>
+      <DemoBlock title='通过Ref控制图片索引'>
+        <RefControl />
       </DemoBlock>
     </>
   )
