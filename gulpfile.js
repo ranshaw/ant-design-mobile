@@ -16,6 +16,7 @@ const tsconfig = require('./tsconfig.json')
 const packageJson = require('./package.json')
 
 const pxMultiplePlugin = require('postcss-px-multiple')({ times: 2 })
+const pxtorem = require('postcss-pxtorem')
 
 function clean() {
   return del('./lib/**')
@@ -32,6 +33,16 @@ function buildStyle() {
         paths: [path.join(__dirname, 'src')],
         relativeUrls: true,
       })
+    )
+    .pipe(
+      postcss([
+        pxtorem({
+          rootValue: 37.5,
+          unitPrecision: 2,
+          propList: ['*'],
+          exclude: /node_modules/i,
+        }),
+      ])
     )
     .pipe(gulp.dest('./lib/es'))
     .pipe(gulp.dest('./lib/cjs'))
