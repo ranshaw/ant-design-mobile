@@ -75,6 +75,7 @@ const defaultProps = {
   defaultValue: [],
   closeOnMaskClick: true,
   renderLabel: defaultRenderLabel,
+  mouseWheel: true,
 }
 
 export const Picker = memo(

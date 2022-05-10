@@ -36,6 +36,7 @@ const defaultProps = {
   max: new Date(new Date().setFullYear(thisYear + 10)),
   precision: 'day',
   renderLabel: defaultRenderLabel,
+  mouseWheel: true,
 }
 
 export const DatePickerView: FC<DatePickerViewProps> = p => {

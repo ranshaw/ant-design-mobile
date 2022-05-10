@@ -59,6 +59,7 @@ const defaultProps = {
   precision: 'day',
   renderLabel: defaultRenderLabel,
   defaultValue: null as Date | null,
+  mouseWheel: true,
 }
 
 export const DatePicker = forwardRef<DatePickerRef, DatePickerProps>(
