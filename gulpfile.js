@@ -37,7 +37,7 @@ function buildStyle() {
     .pipe(
       postcss([
         pxtorem({
-          rootValue: 37.5,
+          rootValue: 50,
           unitPrecision: 2,
           propList: ['*'],
           exclude: /node_modules/i,

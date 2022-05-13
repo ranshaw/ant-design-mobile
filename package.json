@@ -1,6 +1,6 @@
 {
-  "name": "antd-mobile",
-  "version": "5.11.2",
+  "name": "antd-mobile-v5",
+  "version": "5.11.4",
   "scripts": {
     "start": "dumi dev",
     "build": "gulp",
