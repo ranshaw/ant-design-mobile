@@ -1,5 +1,13 @@
 # Skeleton
 
+Graphically represent content placeholders.
+
+## When to Use
+
+Provides a placeholder graphic composition where you need to wait for content to load.
+
+## Demos
+
 <code src="./demos/demo1.tsx"></code>
 
 ## Skeleton

@@ -1,5 +1,13 @@
 # Grid
 
+Used for navigation of multiple sub-functions in the business.
+
+## When to Use
+
+It is used as a function entry in pages with strong recommendation properties, such as the home page.
+
+## Demos
+
 <code src="./demos/demo1.tsx"></code>
 
 ## Grid

@@ -1,8 +1,18 @@
 # CheckList
 
-<code src="./demos/demo1.tsx"></code>
+Checklist operation.
+
+## When to Use
+
+Select one or more of a set of list items.
 
 The bottom layer of `CheckList` is implemented based on `List`, which is a list that can be checked.
+
+## Demos
+
+<code src="./demos/demo1.tsx"></code>
+
+<code src="./demos/demo2.tsx"></code>
 
 ## CheckList
 

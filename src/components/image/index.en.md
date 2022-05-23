@@ -1,7 +1,19 @@
 # Image
 
+Previewable pictures.
+
+## When to Use
+
+- Use when you need to show pictures.
+- Display loading when loading large images or fault-tolerant handling when loading fails.
+
+## Demos
+
 <code src="./demos/demo1.tsx"></code>
+
 <code src="./demos/demo2.tsx" debug></code>
+
+## Image
 
 ### Props
 
@@ -15,6 +27,7 @@
 | placeholder | Placeholder when loading                                            | `ReactNode`                                                      | default placeholder |
 | fallback    | Placeholder when failed to load                                     | `ReactNode`                                                      | default placeholder |
 | lazy        | Whether to load image lazily                                        | `boolean`                                                        | `false`             |
+| draggable   | Whether to allow users to drag the image                            | `boolean`                                                        | `false`             |
 | onError     | Callback when failed to load                                        | `(event: React.SyntheticEvent<HTMLImageElement, Event>) => void` | -                   |
 | onClick     | The click event                                                     | `(event: React.MouseEvent<HTMLImageElement, Event>) => void`     | -                   |
 | onLoad      | Triggered when image loaded                                         | `(event: React.SyntheticEvent<HTMLImageElement, Event>) => void` | -                   |

@@ -1,8 +1,18 @@
 # Button 按钮
 
+用于开始一个即时操作。
+
+## 何时使用
+
+标记了一个或封装一组操作命令，响应用户点击行为，触发相应的业务逻辑。
+
+## 示例
+
 <code src="./demos/demo1.tsx"></code>
 
 <code src="./demos/demo2.tsx"></code>
+
+## Button
 
 ### 属性
 
@@ -19,6 +29,8 @@
 | onClick     | 点击事件                                                                            | `(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void \| Promise<void>` | -                                     |
 | type        | 原生 `button` 元素的 `type` 属性                                                    | `'submit' \| 'reset' \| 'button'`                                                   | `'button'`                            |
 | shape       | 按钮的形状                                                                          | `'default' \| 'rounded' \| 'rectangular'`                                           | `'default'`                           |
+
+此外，还支持原生 `button` 元素的以下属性：`onMouseDown` `onMouseUp` `onTouchStart` `onTouchEnd`。
 
 ### CSS 变量
 

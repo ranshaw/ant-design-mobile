@@ -1,6 +1,16 @@
 # ProgressCircle 进度圈
 
+用环形图形表示百分比进度。
+
+## 何时使用
+
+适用于展示任务当前进度。
+
+## 示例
+
 <code src="./demos/demo1.tsx"></code>
+
+## ProgressCircle
 
 ### 属性
 

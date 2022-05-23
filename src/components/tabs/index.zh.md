@@ -1,5 +1,13 @@
 # Tabs 标签页
 
+内容组之间进行导航切换。
+
+## 何时使用
+
+当前内容需要分成同层级结构的组，进行内容切换展示，常用在表单或者列表的顶部。
+
+## 示例
+
 <code src="./demos/demo1.tsx"></code>
 
 <code src="./demos/demo2.tsx"></code>
@@ -29,6 +37,8 @@
 | --content-padding           | `tab` 内容区的 `padding`                                               | `12px`                      |
 | --active-line-height        | 当前激活 `tab` 下划线的高度                                            | `2px`                       |
 | --active-line-border-radius | 当前激活 `tab` 下划线的圆角                                            | `var(--active-line-height)` |
+| --active-title-color        | 当前激活 `tab` 选项文字颜色                                            | `var(--adm-color-primary)`  |
+| --active-line-color         | 当前激活 `tab` 下划线的颜色                                            | `var(--adm-color-primary)`  |
 
 ## Tabs.Tab
 

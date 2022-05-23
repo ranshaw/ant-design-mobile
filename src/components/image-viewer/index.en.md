@@ -1,5 +1,13 @@
 # ImageViewer
 
+See the full picture by zooming in.
+
+## When to Use
+
+You need to click on the picture to view the details and use it with the thumbnail.
+
+## Demos
+
 <code src="./demos/demo1.tsx"></code>
 
 ## ImageViewer

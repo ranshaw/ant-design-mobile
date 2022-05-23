@@ -1,8 +1,17 @@
 # Picker 选择器
 
+显示一个或多个选项集合的的可滚动列表。
+
+## 何时使用
+
+- 提供一组或多组关联选项供用户选择。
+- 当少于 5 个选项时，建议直接将选项平铺，使用 Radio 是更好的选择。
+
 Picker 系列一共包括了三个组件：[Picker](#picker)、[CascadePicker](#cascadepicker)、[DatePicker](#datepicker)。
 
 ## Picker
+
+### 示例
 
 <code src="./demos/demo1.tsx"></code>
 
@@ -97,6 +106,8 @@ type PickerValueExtend = {
 
 ## CascadePicker
 
+### 示例
+
 <code src="../cascade-picker/demos/demo1.tsx"></code>
 
 ### 属性
@@ -124,6 +135,8 @@ type CascadePickerOption = {
 同 `Picker`。
 
 ## DatePicker
+
+### 示例
 
 <code src="../date-picker/demos/demo1.tsx"></code>
 

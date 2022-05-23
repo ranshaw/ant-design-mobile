@@ -1,6 +1,18 @@
 # SearchBar 搜索框
 
+搜索场景的输入框组件。
+
+## 何时使用
+
+在信息池中缩小范围，快速而轻松地获取目标信息。
+
+## 示例
+
 <code src="./demos/demo1.tsx"></code>
+
+<code src="./demos/demo2.tsx"></code>
+
+## SearchBar
 
 ### 属性
 

@@ -1,5 +1,13 @@
 # TabBar
 
+Navigation tabs at the bottom of the page.
+
+## When to Use
+
+Useful for switching between different pages.
+
+## Demos
+
 <code src="./demos/demo1.tsx"></code>
 
 <code src="./demos/demo2.tsx"></code>

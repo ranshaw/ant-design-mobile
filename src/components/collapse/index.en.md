@@ -1,5 +1,14 @@
 # Collapse
 
+A content area that can be collapsed/expanded.
+
+## When to Use
+
+- Group and hide complex areas to keep pages tidy.
+- An accordion is a special type of accordion panel that only allows a single content area to expand.
+
+## Demos
+
 <code src="./demos/demo1.tsx"></code>
 
 <code src="./demos/demo2.tsx"></code>

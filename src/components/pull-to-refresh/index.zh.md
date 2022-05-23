@@ -1,5 +1,13 @@
 # PullToRefresh 下拉刷新
 
+在列表中通过手指下拉刷新加载新内容的交互操作。
+
+## 何时使用
+
+适用于对当前页面进行内容更新。
+
+## 示例
+
 ### 基础用法
 
 <code src="./demos/demo1.tsx"></code>
@@ -15,6 +23,8 @@
 ### 内容区域存在多层嵌套
 
 <code src="./demos/demo-nested.tsx"></code>
+
+## PullToRefresh
 
 ### 属性
 

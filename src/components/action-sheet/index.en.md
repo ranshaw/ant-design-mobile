@@ -1,6 +1,16 @@
 # ActionSheet
 
+Action menu panel that pops up from the bottom.
+
+## When to Use
+
+Triggered by user operation, it provides a set of two or more options related to the current scene operation, allowing the user to complete the operation without leaving the scene.
+
+## Demos
+
 <code src="./demos/demo1.tsx"></code>
+
+## ActionSheet
 
 ### Props
 

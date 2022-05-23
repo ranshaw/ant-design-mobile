@@ -1,5 +1,15 @@
 # Swiper
 
+A set of rotating areas.
+
+## When to Use
+
+- When there is a set of flat content.
+- When the content space is insufficient, it can be stored in the form of a revolving lantern for carousel display.
+- Often used for a set of images or card carousels.
+
+## Demos
+
 ### Basic Usage
 
 <code src="./demos/demo1.tsx"></code>
@@ -23,6 +33,7 @@ When you use a vertical Swiper, be sure to set its height through the `--height`
 <code src="./demos/demo5.tsx"></code>
 
 <code src="./demos/demo6.tsx" debug></code>
+
 <code src="./demos/demo7.tsx" debug></code>
 
 ## Swiper
@@ -63,6 +74,8 @@ When you use a vertical Swiper, be sure to set its height through the `--height`
 | swipeNext | Switch to the next one        | `() => void`              |
 
 ## Swiper.Item
+
+### Props
 
 | Name    | Description                          | Type                                                        | Default |
 | ------- | ------------------------------------ | ----------------------------------------------------------- | ------- |

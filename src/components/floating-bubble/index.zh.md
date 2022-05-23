@@ -1,10 +1,20 @@
 # FloatingBubble 浮动气泡 <Experimental></Experimental>
 
+悬浮在页面边缘的可点击气泡。
+
+## 何时使用
+
+适用于为当前页面提供额外功能。
+
+## 示例
+
 <code src="./demos/demo1.tsx"></code>
 
 <code src="./demos/demo2.tsx"></code>
 
 <code src="./demos/demo3.tsx"></code>
+
+## FloatingBubble
 
 ### 属性
 

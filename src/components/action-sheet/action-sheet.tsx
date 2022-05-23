@@ -3,7 +3,6 @@ import { NativeProps, withNativeProps } from '../../utils/native-props'
 import { mergeProps } from '../../utils/with-default-props'
 import classNames from 'classnames'
 import Popup from '../popup'
-import Button from '../button'
 import { GetContainer } from '../../utils/render-to-container'
 import SafeArea from '../safe-area'
 import { renderImperatively } from '../../utils/render-imperatively'
@@ -74,11 +73,15 @@ export const ActionSheet: FC<ActionSheetProps> = p => {
                 key={action.key}
                 className={`${classPrefix}-button-item-wrapper`}
               >
-                <Button
-                  block
-                  fill='none'
-                  shape='rectangular'
-                  disabled={action.disabled}
+                <a
+                  className={classNames(
+                    'adm-plain-anchor',
+                    `${classPrefix}-button-item`,
+                    {
+                      [`${classPrefix}-button-item-danger`]: action.danger,
+                      [`${classPrefix}-button-item-disabled`]: action.disabled,
+                    }
+                  )}
                   onClick={() => {
                     action.onClick?.()
                     props.onAction?.(action, index)
@@ -86,9 +89,6 @@ export const ActionSheet: FC<ActionSheetProps> = p => {
                       props.onClose?.()
                     }
                   }}
-                  className={classNames(`${classPrefix}-button-item`, {
-                    [`${classPrefix}-button-item-danger`]: action.danger,
-                  })}
                 >
                   <div className={`${classPrefix}-button-item-name`}>
                     {action.text}
@@ -98,7 +98,7 @@ export const ActionSheet: FC<ActionSheetProps> = p => {
                       {action.description}
                     </div>
                   )}
-                </Button>
+                </a>
               </div>
             ))}
           </div>
@@ -106,11 +106,11 @@ export const ActionSheet: FC<ActionSheetProps> = p => {
           {props.cancelText && (
             <div className={`${classPrefix}-cancel`}>
               <div className={`${classPrefix}-button-item-wrapper`}>
-                <Button
-                  block
-                  fill='none'
-                  shape='rectangular'
-                  className={`${classPrefix}-button-item`}
+                <a
+                  className={classNames(
+                    'adm-plain-anchor',
+                    `${classPrefix}-button-item`
+                  )}
                   onClick={() => {
                     props.onClose?.()
                   }}
@@ -118,7 +118,7 @@ export const ActionSheet: FC<ActionSheetProps> = p => {
                   <div className={`${classPrefix}-button-item-name`}>
                     {props.cancelText}
                   </div>
-                </Button>
+                </a>
               </div>
             </div>
           )}
