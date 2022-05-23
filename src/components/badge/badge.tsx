@@ -4,7 +4,7 @@ import { NativeProps, withNativeProps } from '../../utils/native-props'
 
 const classPrefix = `adm-badge`
 
-export const dot = Symbol()
+export const dot = <React.Fragment />
 
 export type BadgeProps = {
   content?: React.ReactNode | typeof dot
@@ -34,7 +34,7 @@ export const Badge: FC<BadgeProps> = props => {
             style={
               {
                 '--color': color,
-              } as any
+              } as BadgeProps['style']
             }
           >
             {!isDot && (

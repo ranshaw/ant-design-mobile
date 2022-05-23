@@ -1,4 +1,4 @@
-<img src="https://gw.alipayobjects.com/mdn/rms_ee68a8/afts/img/A*hjjDS5Yy-ooAAAAAAAAAAAAAARQnAQ" alt="logo" width="100%" />
+<img alt="logo" src="https://gw.alipayobjects.com/mdn/rms_ee68a8/afts/img/A*hjjDS5Yy-ooAAAAAAAAAAAAAARQnAQ" width="100%" />
 
 <p align="center">
   <a href="https://mobile.ant.design">English Doc</a>
@@ -10,7 +10,6 @@
   <a href="https://gw.alipayobjects.com/mdn/rms_25513e/afts/img/A*hBjlR4nUWjkAAAAAAAAAAAAAARQnAQ">钉钉</a>
 </p>
 
- 
 ```bash
 $ npm install --save antd-mobile
 # or
@@ -31,5 +30,3 @@ If you have some question about how to use ant-mobile, you can start a [discussi
 ---
 
 Thanks to all the contributors of antd-mobile:
-
- 

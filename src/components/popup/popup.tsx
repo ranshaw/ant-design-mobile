@@ -4,6 +4,7 @@ import { useUnmountedRef } from 'ahooks'
 import { NativeProps, withNativeProps } from '../../utils/native-props'
 import { mergeProps } from '../../utils/with-default-props'
 import Mask from '../mask'
+import type { MaskProps } from '../mask'
 import { useLockScroll } from '../../utils/use-lock-scroll'
 import {
   GetContainer,
@@ -31,7 +32,7 @@ export type PopupProps = {
   bodyClassName?: string
   bodyStyle?: React.CSSProperties
   maskClassName?: string
-  maskStyle?: React.CSSProperties
+  maskStyle?: MaskProps['style']
   onClick?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
   stopPropagation?: PropagationEvent[]
   children?: React.ReactNode
@@ -94,7 +95,7 @@ export const Popup: FC<PopupProps> = p => {
       <div
         className={classPrefix}
         onClick={props.onClick}
-        style={{ display: active ? 'unset' : 'none' }}
+        style={{ display: active ? undefined : 'none' }}
       >
         {props.mask && (
           <Mask

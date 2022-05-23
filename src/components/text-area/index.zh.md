@@ -1,6 +1,16 @@
 # TextArea 文本域
 
+通过键盘输入内容，是最基础的表单域包装。
+
+## 何时使用
+
+需要折行的长文本输入。
+
+## 示例
+
 <code src="./demos/demo1.tsx"></code>
+
+## TextArea
 
 ### 属性
 

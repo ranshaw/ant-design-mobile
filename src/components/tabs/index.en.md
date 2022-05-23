@@ -1,5 +1,13 @@
 # Tabs
 
+Navigate between content groups.
+
+## When to Use
+
+The current content needs to be divided into groups of the same hierarchical structure for content switching display, which is often used at the top of a form or list.
+
+## Demos
+
 <code src="./demos/demo1.tsx"></code>
 
 <code src="./demos/demo2.tsx"></code>
@@ -30,6 +38,8 @@
 | --content-padding           | Padding of the tab content                                                                  | `12px`                      |
 | --active-line-height        | The height of the active tab underline                                                      | `2px`                       |
 | --active-line-border-radius | The borderRadius of the active tab underline                                                | `var(--active-line-height)` |
+| --active-title-color        | The color of the active tab title                                                           | `var(--adm-color-primary)`  |
+| --active-line-color         | The color of the active tab underline                                                       | `var(--adm-color-primary)`  |
 
 ## Tabs.Tab
 

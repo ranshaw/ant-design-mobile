@@ -1,10 +1,18 @@
 # List
 
+Generic list.
+
+## When to Use
+
+Carry text, lists, pictures, paragraphs, etc. cleanly and efficiently in the form of a list.
+
+## Demos
+
 <code src="./demos/demo1.tsx"></code>
 
-<code src="./demos/demo2.tsx"></code>
-
 <code src="./demos/demo3.tsx"></code>
+
+<code src="./demos/demo2.tsx"></code>
 
 <code src="./demos/demo4.tsx"></code>
 

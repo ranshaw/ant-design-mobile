@@ -1,8 +1,18 @@
 # Stepper
 
+A two-stage control that increases, decreases or modifies values.
+
+## When to Use
+
+It is suitable for inputting and adjusting the current value within a certain range.
+
+## Demos
+
 <code src="./demos/demo1.tsx"></code>
 
 <code src="./demos/demo2.tsx"></code>
+
+## Stepper
 
 ### Props
 

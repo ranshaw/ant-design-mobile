@@ -1,8 +1,18 @@
 # InfiniteScroll 无限滚动
 
+列表滚动到底部自动加载更多数据。
+
+## 何时使用
+
+用户想看到新的数据时，可以上滑页面自动加载数据。
+
 当 `hasMore` 属性为 `true` 时，用户页面滚动到底部 `threshold` (默认为 250px)时无限滚动组件会调用定义的 `loadMore` 函数。
 
+## 示例
+
 <code src="./demos/demo1.tsx"></code>
+
+## InfiniteScroll
 
 ### 属性
 
@@ -41,6 +51,12 @@ function loadMore() { // 正确
 ### 配合搜索使用
 
 <code src="./demos/demo3.tsx"></code>
+
+### 滚动加载无限长列表
+
+结合 [react-virtualized](https://github.com/bvaughn/react-virtualized) 实现滚动加载无限长列表
+
+<code src="./demos/demo2.tsx"></code>
 
 ## 常见问题
 

@@ -1,8 +1,18 @@
 # InfiniteScroll
 
+Scrolling to the bottom of the list automatically loads more data.
+
+## When to Use
+
+When users want to see new data, they can slide up the page to automatically load the data.
+
 When the `hasMore` prop is `true`, the infinite scroll component will call the defined `loadMore` function when the user page scrolls to the bottom `threshold` (default is 250px).
 
+## Demos
+
 <code src="./demos/demo1.tsx"></code>
+
+## InfiniteScroll
 
 ### Props
 
@@ -41,6 +51,12 @@ If necessary, `<InfiniteScroll>` allows custom display content, this content can
 ### Use with search
 
 <code src="./demos/demo3.tsx"></code>
+
+### Infinite virtualized List
+
+An example of infinite virtualized list via using [react-virtualized](https://github.com/bvaughn/react-virtualized)
+
+<code src="./demos/demo2.tsx"></code>
 
 ## FAQ
 

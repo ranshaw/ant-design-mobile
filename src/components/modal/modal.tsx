@@ -3,6 +3,7 @@ import { mergeProps } from '../../utils/with-default-props'
 import classNames from 'classnames'
 import { useUnmountedRef } from 'ahooks'
 import Mask from '../mask'
+import type { MaskProps } from '../mask'
 import { Action, ModalActionButton } from './modal-action-button'
 import Image from '../image'
 import Space from '../space'
@@ -18,6 +19,7 @@ import AutoCenter from '../auto-center'
 import { useSpring, animated } from '@react-spring/web'
 import { NativeProps, withNativeProps } from '../../utils/native-props'
 import { CloseOutline } from 'antd-mobile-icons'
+import { ShouldRender } from '../../utils/should-render'
 
 export type ModalProps = {
   afterClose?: () => void
@@ -35,11 +37,13 @@ export type ModalProps = {
   getContainer?: GetContainer
   bodyStyle?: React.CSSProperties
   bodyClassName?: string
-  maskStyle?: React.CSSProperties
+  maskStyle?: MaskProps['style']
   maskClassName?: string
   stopPropagation?: PropagationEvent[]
   showCloseButton?: boolean
   disableBodyScroll?: boolean
+  destroyOnClose?: boolean
+  forceRender?: boolean
 } & NativeProps
 
 const defaultProps = {
@@ -150,28 +154,34 @@ export const Modal: FC<ModalProps> = p => {
     props.stopPropagation,
     withNativeProps(
       props,
-      <div
-        className={cls()}
-        style={{
-          display: active ? 'unset' : 'none',
-        }}
+      <ShouldRender
+        active={props.visible}
+        forceRender={props.forceRender}
+        destroyOnClose={props.destroyOnClose}
       >
-        <Mask
-          visible={props.visible}
-          onMaskClick={props.closeOnMaskClick ? props.onClose : undefined}
-          style={props.maskStyle}
-          className={classNames(cls('mask'), props.maskClassName)}
-          disableBodyScroll={props.disableBodyScroll}
-        />
         <div
-          className={cls('wrap')}
+          className={cls()}
           style={{
-            pointerEvents: props.visible ? 'unset' : 'none',
+            display: active ? undefined : 'none',
           }}
         >
-          <animated.div style={style}>{body}</animated.div>
+          <Mask
+            visible={props.visible}
+            onMaskClick={props.closeOnMaskClick ? props.onClose : undefined}
+            style={props.maskStyle}
+            className={classNames(cls('mask'), props.maskClassName)}
+            disableBodyScroll={props.disableBodyScroll}
+          />
+          <div
+            className={cls('wrap')}
+            style={{
+              pointerEvents: props.visible ? undefined : 'none',
+            }}
+          >
+            <animated.div style={style}>{body}</animated.div>
+          </div>
         </div>
-      </div>
+      </ShouldRender>
     )
   )
 

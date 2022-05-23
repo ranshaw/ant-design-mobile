@@ -1,6 +1,16 @@
 # TextArea
 
+Entering content through the keyboard is the most basic form field wrapper.
+
+## When to Use
+
+Long text input that requires wrapping.
+
+## Demos
+
 <code src="./demos/demo1.tsx"></code>
+
+## TextArea
 
 ### Props
 

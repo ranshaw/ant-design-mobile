@@ -1,5 +1,13 @@
 # Popover
 
+Click on the element to pop up a bubble menu.
+
+## When to Use
+
+Navigation applicable to functions can only be evoked by the icons on the navigation bar, and is usually used to accommodate low-frequency functions.
+
+## Demos
+
 <code src="./demos/demo1.tsx"></code>
 
 <code src="./demos/demo2.tsx"></code>

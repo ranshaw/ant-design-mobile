@@ -1,8 +1,18 @@
 # Button
 
+Used to start an immediate operation.
+
+## When to Use
+
+Marks or encapsulates a group of operation commands, responds to user click behavior, and triggers corresponding business logic.
+
+## Demos
+
 <code src="./demos/demo1.tsx"></code>
 
 <code src="./demos/demo2.tsx"></code>
+
+## Button
 
 ### Props
 
@@ -19,6 +29,8 @@
 | onClick     | The click event.                                                                                                        | `(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void \| Promise<void>` | -                                     |
 | type        | The `type` prop of native `button` element.                                                                             | `'submit' \| 'reset' \| 'button'`                                                   | `'button'`                            |
 | shape       | The shape of the button.                                                                                                | `'default' \| 'rounded' \| 'rectangular'`                                           | `'default'`                           |
+
+In addition, the following properties of the native `button` element are supported: `onMouseDown` `onMouseUp` `onTouchStart` `onTouchEnd`.
 
 ### CSS Variables
 

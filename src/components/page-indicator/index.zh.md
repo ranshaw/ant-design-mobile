@@ -1,6 +1,16 @@
 # PageIndicator 页码指示器
 
+指示当前显示的是多页面视图的哪一页。
+
+## 何时使用
+
+适用于表示当前内容区块可以横向滚动翻页。
+
+## 示例
+
 <code src="./demos/demo1.tsx"></code>
+
+## PageIndicator
 
 ### 属性
 

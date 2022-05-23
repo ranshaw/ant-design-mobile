@@ -1,6 +1,16 @@
 # Rate
 
+Graphical representation of the degree of rating scale.
+
+## When to Use
+
+Useful for showing things ratings and quick scoring.
+
+## Demos
+
 <code src="./demos/demo1.tsx"></code>
+
+## Rate
 
 ### Props
 
@@ -17,8 +27,8 @@
 
 ### CSS Variables
 
-| Name             | Description               | Default                                                                                                  |
-| ---------------- | ------------------------- | ----------------------- |
-| --star-size      | Star size.                | `24px`                                                                                                   |
-| --active-color   | Fill color when active.   | `#ffd21e`                                                                                                |
+| Name             | Description               | Default                  |
+| ---------------- | ------------------------- | ------------------------ |
+| --star-size      | Star size.                | `24px`                   |
+| --active-color   | Fill color when active.   | `#ffd21e`                |
 | --inactive-color | Fill color when inactive. | `var(--adm-color-light)` |

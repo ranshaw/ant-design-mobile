@@ -1,5 +1,13 @@
 # PullToRefresh
 
+An interaction to load new content with a finger pull-to-refresh in a list.
+
+## When to Use
+
+It is suitable for updating the content of the current page.
+
+## Demos
+
 ### Basic Usage
 
 <code src="./demos/demo1.tsx"></code>
@@ -15,6 +23,8 @@
 ### Nested Scroll Areas
 
 <code src="./demos/demo-nested.tsx"></code>
+
+## PullToRefresh
 
 ### Props
 

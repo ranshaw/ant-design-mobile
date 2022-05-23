@@ -1,6 +1,16 @@
 # ProgressCircle
 
+Percentage progress is represented by a ring graph.
+
+## When to Use
+
+It is suitable for displaying the current progress of the task.
+
+## Demos
+
 <code src="./demos/demo1.tsx"></code>
+
+## ProgressCircle
 
 ### Props
 

@@ -1,6 +1,16 @@
 # SwipeAction 滑动操作
 
+列表的功能扩展。
+
+## 何时使用
+
+通过滑动操作来展示隐藏的功能菜单。
+
+## 示例
+
 <code src="./demos/demo1.tsx"></code>
+
+## SwipeAction
 
 ### 属性
 

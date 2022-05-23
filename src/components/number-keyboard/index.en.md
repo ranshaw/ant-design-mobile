@@ -1,8 +1,20 @@
 # NumberKeyboard <Experimental></Experimental>
 
-H5 numeric keyboard, can be used with password input box component or custom input box component
+Numeric keypad panel.
+
+## When to Use
+
+Applicable when entering numeric content.
+
+Can be used with password input box component or custom input box component
+
+If possible, we recommend using the native keyboard provided by the system or client. The virtual numeric keypad is just a supplement for some special scenarios.
+
+## Demos
 
 <code src="./demos/demo1.tsx"></code>
+
+## NumberKeyboard
 
 ### Props
 
@@ -25,3 +37,9 @@ H5 numeric keyboard, can be used with password input box component or custom inp
 | safeArea        | Whether to enable safe area padding                                                                                         | `boolean`                                  | `true`                |
 
 In addition, the following attributes of [Popup](./popup) are supported: `stopPropagation`
+
+## FAQ
+
+### Does the NumberKeyboard support automatic reading of verification codes from SMS?
+
+No.
