@@ -1,7 +1,7 @@
 import React, { FC, ReactNode, useState } from 'react'
 import { mergeProps } from '../../utils/with-default-props'
 import classNames from 'classnames'
-import { useUnmountedRef } from 'ahooks'
+import { useIsomorphicLayoutEffect, useUnmountedRef } from 'ahooks'
 import Mask from '../mask'
 import type { MaskProps } from '../mask'
 import { Action, ModalActionButton } from './modal-action-button'
@@ -20,6 +20,7 @@ import { useSpring, animated } from '@react-spring/web'
 import { NativeProps, withNativeProps } from '../../utils/native-props'
 import { CloseOutline } from 'antd-mobile-icons'
 import { ShouldRender } from '../../utils/should-render'
+import { useInnerVisible } from '../../utils/use-inner-visible'
 
 export type ModalProps = {
   afterClose?: () => void
@@ -55,6 +56,8 @@ const defaultProps = {
   showCloseButton: false,
   getContainer: null,
   disableBodyScroll: true,
+  destroyOnClose: false,
+  forceRender: false,
 }
 
 export const Modal: FC<ModalProps> = p => {
@@ -70,9 +73,6 @@ export const Modal: FC<ModalProps> = p => {
       friction: 25,
       clamp: true,
     },
-    onStart: () => {
-      setActive(true)
-    },
     onRest: () => {
       if (unmountedRef.current) return
       setActive(props.visible)
@@ -85,6 +85,13 @@ export const Modal: FC<ModalProps> = p => {
   })
 
   const [active, setActive] = useState(props.visible)
+  useIsomorphicLayoutEffect(() => {
+    if (props.visible) {
+      setActive(true)
+    }
+  }, [props.visible])
+
+  const maskVisible = useInnerVisible(active && props.visible)
 
   const body = (
     <div
@@ -154,38 +161,38 @@ export const Modal: FC<ModalProps> = p => {
     props.stopPropagation,
     withNativeProps(
       props,
-      <ShouldRender
-        active={props.visible}
-        forceRender={props.forceRender}
-        destroyOnClose={props.destroyOnClose}
+      <div
+        className={cls()}
+        style={{
+          display: active ? undefined : 'none',
+          pointerEvents: active ? undefined : 'none',
+        }}
       >
-        <div
-          className={cls()}
-          style={{
-            display: active ? undefined : 'none',
-          }}
-        >
-          <Mask
-            visible={props.visible}
-            onMaskClick={props.closeOnMaskClick ? props.onClose : undefined}
-            style={props.maskStyle}
-            className={classNames(cls('mask'), props.maskClassName)}
-            disableBodyScroll={props.disableBodyScroll}
-          />
-          <div
-            className={cls('wrap')}
-            style={{
-              pointerEvents: props.visible ? undefined : 'none',
-            }}
-          >
-            <animated.div style={style}>{body}</animated.div>
-          </div>
+        <Mask
+          visible={maskVisible}
+          forceRender={props.forceRender}
+          destroyOnClose={props.destroyOnClose}
+          onMaskClick={props.closeOnMaskClick ? props.onClose : undefined}
+          style={props.maskStyle}
+          className={classNames(cls('mask'), props.maskClassName)}
+          disableBodyScroll={props.disableBodyScroll}
+        />
+        <div className={cls('wrap')}>
+          <animated.div style={style}>{body}</animated.div>
         </div>
-      </ShouldRender>
+      </div>
     )
   )
 
-  return renderToContainer(props.getContainer, node)
+  return (
+    <ShouldRender
+      active={active}
+      forceRender={props.forceRender}
+      destroyOnClose={props.destroyOnClose}
+    >
+      {renderToContainer(props.getContainer, node)}
+    </ShouldRender>
+  )
 }
 
 function cls(name: string = '') {
