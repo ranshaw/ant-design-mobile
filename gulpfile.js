@@ -19,6 +19,8 @@ const StatoscopeWebpackPlugin = require('@statoscope/webpack-plugin').default
 const pxMultiplePlugin = require('postcss-px-multiple')({ times: 2 })
 const pxtorem = require('postcss-pxtorem')
 
+const rename = require('gulp-rename')
+
 function clean() {
   return del('./lib/**')
 }
@@ -27,7 +29,7 @@ function buildStyle() {
   return gulp
     .src(['./src/**/*.less'], {
       base: './src/',
-      ignore: ['**/demos/**/*', '**/tests/**/*'],
+      ignore: ['**/demos/**/*', '**/tests/**/*', '*.patch.less'],
     })
     .pipe(
       less({
@@ -47,6 +49,18 @@ function buildStyle() {
     )
     .pipe(gulp.dest('./lib/es'))
     .pipe(gulp.dest('./lib/cjs'))
+}
+
+function copyPatchStyle() {
+  return gulp
+    .src(['./lib/es/global/css-vars-patch.css'])
+    .pipe(
+      rename({
+        dirname: '',
+        extname: '.css',
+      })
+    )
+    .pipe(gulp.dest('./lib/bundle'))
 }
 
 function copyAssets() {
@@ -71,7 +85,7 @@ function buildCJS() {
 function buildES() {
   const tsProject = ts({
     ...tsconfig.compilerOptions,
-    module: 'ESNext',
+    module: 'ES6',
   })
   return gulp
     .src(['src/**/*.{ts,tsx}'], {
@@ -89,7 +103,7 @@ function buildES() {
 function buildDeclaration() {
   const tsProject = ts({
     ...tsconfig.compilerOptions,
-    module: 'ESNext',
+    module: 'ES6',
     declaration: true,
     emitDeclarationOnly: true,
   })
@@ -269,7 +283,7 @@ function generatePackageJSON() {
     .pipe(gulp.dest('./lib/'))
 }
 
-function create2xFolder() {
+function init2xFolder() {
   return gulp
     .src('./lib/**', {
       base: './lib/',
@@ -279,17 +293,32 @@ function create2xFolder() {
 }
 
 function build2xCSS() {
-  return gulp
-    .src('./lib/2x/**/*.css', {
-      base: './lib/2x/',
-    })
-    .pipe(postcss([pxMultiplePlugin]))
-    .pipe(replace('--adm-hd: 1;', '--adm-hd: 2;'))
-    .pipe(
-      gulp.dest('./lib/2x', {
-        overwrite: true,
+  return (
+    gulp
+      .src('./lib/2x/**/*.css', {
+        base: './lib/2x/',
       })
-    )
+      // Hack fix since postcss-px-multiple ignores the `@supports` block
+      .pipe(
+        replace(
+          '@supports not (color: var(--adm-color-text))',
+          '@media screen and (min-width: 999999px)'
+        )
+      )
+      .pipe(postcss([pxMultiplePlugin]))
+      .pipe(
+        replace(
+          '@media screen and (min-width: 999999px)',
+          '@supports not (color: var(--adm-color-text))'
+        )
+      )
+      .pipe(replace('--adm-hd: 1;', '--adm-hd: 2;'))
+      .pipe(
+        gulp.dest('./lib/2x', {
+          overwrite: true,
+        })
+      )
+  )
 }
 
 exports.umdWebpack = umdWebpack
@@ -300,9 +329,10 @@ exports.default = gulp.series(
   buildES,
   buildCJS,
   gulp.parallel(buildDeclaration, buildStyle),
+  copyPatchStyle,
   copyAssets,
   copyMetaFiles,
   generatePackageJSON,
-  gulp.series(create2xFolder, build2xCSS),
-  gulp.parallel(umdWebpack, buildBundles)
+  gulp.parallel(umdWebpack, buildBundles),
+  gulp.series(init2xFolder, build2xCSS)
 )
