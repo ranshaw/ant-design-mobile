@@ -1,5 +1,11 @@
 import '@testing-library/jest-dom/extend-expect'
-import { render, RenderOptions, RenderResult } from '@testing-library/react'
+import {
+  act,
+  fireEvent,
+  render,
+  RenderOptions,
+  RenderResult,
+} from '@testing-library/react'
 import { toHaveNoViolations, axe } from 'jest-axe'
 import * as React from 'react'
 import type { RunOptions } from 'axe-core'
@@ -118,4 +124,21 @@ export const testA11y = async (
 }
 
 export const sleep = (time: number) =>
-  new Promise(resolve => setTimeout(resolve, time))
+  new Promise<void>(resolve => setTimeout(resolve, time))
+
+export const actSleep = (time: number) => {
+  return act(() => sleep(time))
+}
+
+export async function actClick(
+  element: Document | Element | Window | Node,
+  wait?: number
+) {
+  await act(async () => {
+    fireEvent.click(element)
+    await sleep(0)
+  })
+  if (wait !== undefined) {
+    await actSleep(wait)
+  }
+}

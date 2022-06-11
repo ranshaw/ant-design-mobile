@@ -9,6 +9,7 @@ import {
 } from 'testing'
 import FloatingPanel, { FloatingPanelRef } from '..'
 import { patchCreateEvent } from '../../../tests/gesture/utils'
+import { reduceMotion, restoreMotion } from 'antd-mobile'
 
 const classPrefix = `adm-floating-panel`
 
@@ -71,7 +72,7 @@ describe('FloatingPanel', () => {
   })
 
   test('basic usage', async () => {
-    const { getByTestId } = await render(<App />)
+    const { getByTestId } = render(<App />)
 
     const panelEl = getByTestId('panel')
 
@@ -95,8 +96,9 @@ describe('FloatingPanel', () => {
   })
 
   test('height change', async () => {
+    restoreMotion()
     const fn = jest.fn()
-    const { getByTestId } = await render(<App onHeightChange={fn} />)
+    const { getByTestId } = render(<App onHeightChange={fn} />)
 
     const panelEl = getByTestId('panel')
 
@@ -117,6 +119,7 @@ describe('FloatingPanel', () => {
     expect(fn.mock.calls[fn.mock.calls.length - 1][0]).toBe(
       anchors[anchors.length - 1]
     )
+    reduceMotion()
   })
 
   test('set height in an imperative way', async () => {
@@ -135,7 +138,7 @@ describe('FloatingPanel', () => {
       )
     }
 
-    const { getByText, getByTestId } = await render(<Wrap />)
+    const { getByText, getByTestId } = render(<Wrap />)
     const panelEl = getByTestId('panel')
 
     getByText('btn').click()
@@ -150,27 +153,21 @@ describe('FloatingPanel', () => {
   })
 
   test('only the head area can be dragged', async () => {
-    const { getByTestId } = await render(
-      <App handleDraggingOfContent={false} />
-    )
+    const { getByTestId } = render(<App handleDraggingOfContent={false} />)
 
     const panelEl = getByTestId('panel')
     const headEl = document.querySelectorAll(`.${classPrefix}-header`)[0]
 
     // content area
     mockDrag(panelEl, 0, -(anchors[0] + 20))
-    await sleep(500)
     expect(panelEl.style.transform).toBe(
       `translateY(calc(100% + (-${anchors[0]}px)))`
     )
 
     // head area
     mockDrag(headEl, 0, -(anchors[0] + 20))
-    await sleep(500)
-    await waitFor(() =>
-      expect(panelEl.style.transform).toBe(
-        `translateY(calc(100% + (-${anchors[1]}px)))`
-      )
+    expect(panelEl.style.transform).toBe(
+      `translateY(calc(100% + (-${anchors[1]}px)))`
     )
   })
 })

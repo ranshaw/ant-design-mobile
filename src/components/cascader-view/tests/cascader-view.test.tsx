@@ -20,10 +20,16 @@ describe('CascaderView', () => {
 
   test('basic usage', async () => {
     const onChange = jest.fn()
-    const { getByText, container } = await render(
-      <CascaderView options={options} onChange={onChange} />
+    const onTabsChange = jest.fn()
+    const { getByText, container } = render(
+      <CascaderView
+        options={options}
+        onChange={onChange}
+        onTabsChange={onTabsChange}
+      />
     )
-
+    fireEvent.click(getByText('请选择'))
+    expect(onTabsChange).toBeCalled()
     fireEvent.click(getByText('浙江'))
     expect(container).toMatchSnapshot()
 
@@ -38,16 +44,14 @@ describe('CascaderView', () => {
   })
 
   test('controlled mode', async () => {
-    const { container } = await render(
+    const { container } = render(
       <CascaderView options={options} value={['浙江', '宁波', '江北区']} />
     )
     expect(container).toMatchSnapshot()
   })
 
   test('same value in options', async () => {
-    const { container } = await render(
-      <CascaderView options={sameValueOptions} />
-    )
+    const { container } = render(<CascaderView options={sameValueOptions} />)
 
     click(0, 0)
     expect(container).toMatchSnapshot()

@@ -61,7 +61,6 @@ export const Ellipsis: FC<EllipsisProps> = p => {
     container.style.textOverflow = 'clip'
     container.style.whiteSpace = 'normal'
     container.style.webkitLineClamp = 'unset'
-    container.style.webkitBoxOrient = 'unset'
     container.style.display = 'block'
     const lineHeight = pxToNumber(originStyle.lineHeight)
     const maxHeight = Math.floor(
@@ -129,7 +128,7 @@ export const Ellipsis: FC<EllipsisProps> = p => {
           }
         }
         const leftPartMiddle = Math.floor((leftPart[0] + leftPart[1]) / 2)
-        const rightPartMiddle = Math.floor((rightPart[0] + rightPart[1]) / 2)
+        const rightPartMiddle = Math.ceil((rightPart[0] + rightPart[1]) / 2)
         container.innerText =
           props.content.slice(0, leftPartMiddle) +
           '...' +
